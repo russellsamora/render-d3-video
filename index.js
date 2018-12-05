@@ -7,15 +7,16 @@ const shell = require('shelljs');
 // const arg = process.argv.slice(2);
 // console.log(arg)
 
-const NUM_FRAMES = 401;
-const OUT_PATH = `${__dirname}/png2`;
+const NUM_FRAMES = 871;
+const SCENE = 'p1980';
+const OUT_PATH = `${__dirname}/png-${SCENE}`;
 
 const width = 1280;
 const height = 720;
-const deviceScaleFactor = 2;
+const deviceScaleFactor = 1;
 
 mkdirp(OUT_PATH);
-// shell.exec(`rm ${OUT_PATH}/*.png`);
+shell.exec(`rm ${OUT_PATH}/*.png`);
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -32,7 +33,7 @@ async function init() {
   await sleep(5000);
 
   // kick it off
-  await page.evaluate(() => window.start());
+  await page.evaluate(s => window.start(s), SCENE);
   // step through each frame:
   // - increment currentTime on the page
   // - save a screenshot
@@ -40,8 +41,8 @@ async function init() {
   for (let f of d3.range(NUM_FRAMES)) {
     console.log(`${f + 1} of ${NUM_FRAMES}`);
     await page.evaluate(f => (currentTime = (f * 1000) / 60), f);
-    // chill for 17ms for some reason
-    await sleep(17);
+    // chill for 50ms for some reason
+    await sleep(50);
 
     const name = d3.format('05')(f);
     const path = `${OUT_PATH}/${name}.png`;
