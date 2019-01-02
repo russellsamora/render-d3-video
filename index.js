@@ -3,16 +3,15 @@ const puppeteer = require('puppeteer');
 const d3 = require('d3');
 const mkdirp = require('mkdirp');
 const shell = require('shelljs');
+const beep = require('beepbeep');
 
-// const arg = process.argv.slice(2);
-// console.log(arg)
+const BASE = 17;
+const NUM_FRAMES = 72 + BASE;
+const SCENE = 't2016';
+const OUT_PATH = `${__dirname}/frames/${SCENE}`;
 
-const NUM_FRAMES = 871;
-const SCENE = 'p1980';
-const OUT_PATH = `${__dirname}/png-${SCENE}`;
-
-const width = 1280;
-const height = 720;
+const width = 1920;
+const height = 1080;
 const deviceScaleFactor = 1;
 
 mkdirp(OUT_PATH);
@@ -53,6 +52,7 @@ async function init() {
   }
 
   browser.close();
+  beep(3, 500);
 }
 
 init();
