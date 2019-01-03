@@ -5,9 +5,11 @@ const mkdirp = require('mkdirp');
 const shell = require('shelljs');
 const beep = require('beepbeep');
 
-const BASE = 17;
-const NUM_FRAMES = 72 + BASE;
+// --- CUSTOM ---
+const NUM_FRAMES = 96;
 const SCENE = 't2016';
+// --- CUSTOM ---
+
 const OUT_PATH = `${__dirname}/frames/${SCENE}`;
 
 const width = 1920;
@@ -32,7 +34,7 @@ async function init() {
   await sleep(5000);
 
   // kick it off
-  await page.evaluate(s => window.start(s), SCENE);
+  await page.evaluate(s => window.kickoff(s), SCENE);
   // step through each frame:
   // - increment currentTime on the page
   // - save a screenshot
