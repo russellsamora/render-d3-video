@@ -6,8 +6,8 @@ const shell = require('shelljs');
 const beep = require('beepbeep');
 
 // --- CUSTOM ---
-const NUM_FRAMES = 96;
-const SCENE = 't2016';
+const NUM_FRAMES = 1773;
+const SCENE = 'p2016';
 // --- CUSTOM ---
 
 const OUT_PATH = `${__dirname}/frames/${SCENE}`;
@@ -30,7 +30,7 @@ async function init() {
   await page.goto('http://localhost:4000?render-d3-video');
 
   // let the page load
-  console.log('loading...');
+  console.log(`loading ${SCENE}...`);
   await sleep(5000);
 
   // kick it off
