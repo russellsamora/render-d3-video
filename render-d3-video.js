@@ -80,7 +80,7 @@ async function renderFrames(path) {
 
 		// kick it off
 		const pageOpts = { width, height };
-		await page.evaluate(arg => window.renderStart(arg), pageOpts);
+		await page.evaluate(arg => window.renderD3Video(arg), pageOpts);
 
 		console.log(`rendering frames to ${framePath}...`);
 		for (let f of d3.range(frames)) {

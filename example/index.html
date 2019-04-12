@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Render D3 Video Example</title>
+	<meta name="description" content="How to use render-d3-video">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<main></main>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script>
+		const main = d3.select('main')
+
+		// override perfomance.now so render-d3-video can control time
+		if (document.URL.includes('render-d3-video')) {
+			window.currentTime = 0;
+			performance.now = () => window.currentTime;
+		}
+
+		function run() {
+			return new Promise(resolve => {
+				main
+					.transition()
+					.duration(1000)
+					.style('background-color', 'orange')
+					.on('end', resolve);
+			})
+		}
+
+		// create a global function for render-d3-video to kickoff OR manually below
+		window.renderD3Video = function renderD3Video({ width, height }) {
+			return new Promise(resolve => {
+				const main = d3.select('main')
+
+				main
+					.style('width', `${width}px`)
+					.style('height', `${height}px`)
+					.style('background-color', 'blue');
+
+				const start = d3.now();
+				run().then(() => {
+					const end = d3.now();
+					const diff = end - start;
+					const frames = Math.round(diff / 1000 * 60);
+					console.log({ frames });
+				})
+
+				resolve();
+			})
+		};
+
+		function init() {
+			// determine if we need to manually invoke rendering
+			d3.timeout(() => {
+				if (window.currentTime === undefined) {
+					window.renderD3Video({ width: 960, height: 540 });
+				}
+			}, 100);
+		}
+
+		init();
+	</script>
+</body>
+
+</html>

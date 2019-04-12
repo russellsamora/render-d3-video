@@ -14,6 +14,38 @@ Adapted from [Adam Pearce](https://roadtolarissa.com/d3-mp4/).
 
 ## Usage
 
+First, you need to setup your JS to override the internal clock.
+
+```JavaScript
+// override perfomance.now so render-d3-video can control time
+if (document.URL.includes('render-d3-video')) {
+	window.currentTime = 0;
+	performance.now = () => window.currentTime;
+}
+
+// create a global function for render-d3-video to kickoff OR manually below
+window.renderD3Video = function renderD3Video({ width, height }) {
+	return new Promise(resolve => {
+		d3.select('main')
+		.style('width', `${width}px`)
+		.style('height', `${height}px`);
+
+		resolve();
+	})
+};
+
+function init() {
+	// determine if we need to manually invoke rendering
+	d3.timeout(() => {
+		if (window.currentTime === undefined) {
+			window.renderD3Video({ width: 960, height: 540 });
+		}
+	}, 100);
+}
+
+init();
+```
+
 Create a directory, and run the command within it. *Note*: All files will be written from the directory the command is executed from.
 
 ```
