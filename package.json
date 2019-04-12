@@ -1,18 +1,26 @@
 {
-	"name": "render-d3-video",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"name": "render-d3-video-cli",
+	"version": "0.0.1",
+	"description": "Render a seamless video screen recording from a locally served site",
+	"main": "render-d3-video.js",
 	"scripts": {
-		"start": "node index.js"
+		"start": "node render-d3-video.js"
 	},
-	"keywords": [],
+	"bin": {
+		"render-d3-video": "./render-d3-video.js"
+	},
+	"keywords": [
+		"render",
+		"d3",
+		"video"
+	],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"beepbeep": "1.2.2",
-		"d3": "5.7.0",
+		"commander": "2.20.0",
+		"d3": "5.9.2",
 		"puppeteer": "1.10.0",
+		"rimraf": "2.6.3",
 		"shelljs": "0.8.3"
 	}
 }
