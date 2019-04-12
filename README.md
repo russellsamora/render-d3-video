@@ -67,3 +67,7 @@ OPTIONS are:
  -h, --help                          output usage information
 
 ```
+
+## Tips
+* Rule of thumb: if it is going to transition, style it with D3
+* You can use CSS transforms with D3 transitions, but use pixels, not percents
