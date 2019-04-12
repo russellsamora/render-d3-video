@@ -14,6 +14,8 @@ Adapted from [Adam Pearce](https://roadtolarissa.com/d3-mp4/).
 
 ## Usage
 
+#### JavaScript
+
 First, you need to setup your JS to override the internal clock.
 
 ```JavaScript
@@ -46,6 +48,9 @@ function init() {
 init();
 ```
 
+See full [example](example).
+
+#### CLI
 Create a directory, and run the command within it. *Note*: All files will be written from the directory the command is executed from.
 
 ```
