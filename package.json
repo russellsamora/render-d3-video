@@ -1,18 +1,18 @@
 {
-  "name": "render-d3-video",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "beepbeep": "1.2.2",
-    "d3": "5.7.0",
-    "puppeteer": "1.10.0",
-    "shelljs": "0.8.3"
-  }
+	"name": "render-d3-video",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"beepbeep": "1.2.2",
+		"d3": "5.7.0",
+		"puppeteer": "1.10.0",
+		"shelljs": "0.8.3"
+	}
 }
