@@ -1,5 +1,5 @@
 {
-	"name": "render-d3-video-cli",
+	"name": "render-d3-video",
 	"version": "0.0.1",
 	"description": "Render a seamless video screen recording from a locally served site",
 	"main": "render-d3-video.js",
