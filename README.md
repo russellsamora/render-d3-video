@@ -5,14 +5,16 @@ Adapted from [Adam Pearce](https://roadtolarissa.com/d3-mp4/).
 
 ## Dependencies
 
-- node
-- ffmpeg
+- [node](https://nodejs.org)
+- [ffmpeg](https://ffmpeg.org/)
 
 ## Installation
 
 `npm install -g render-d3-video`
 
 ## Usage
+
+Create a directory, and run the command within it. *Note*: All files will be written from the directory the command is executed from.
 
 ```
 usage: render-d3-video [options]
