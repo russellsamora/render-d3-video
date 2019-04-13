@@ -16,7 +16,7 @@ Adapted from [Adam Pearce](https://roadtolarissa.com/d3-mp4/).
 
 #### JavaScript
 
-First, you need to setup your JS to override the internal clock.
+First, you need to setup your JS to override the internal clock. You will also need to run a local server.
 
 ```JavaScript
 // override perfomance.now so render-d3-video can control time
