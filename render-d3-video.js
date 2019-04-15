@@ -129,6 +129,7 @@ async function init() {
 		} catch(error) {
 			console.error(error);
 		}
+		console.log('finished!');
 		process.exit();
 	}
 }
