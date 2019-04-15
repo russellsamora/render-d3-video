@@ -21,8 +21,8 @@ program.version(VERSION)
 	.parse(process.argv);
 
 // arguments
-let { frames, width, height, output, deviceScaleFactor } = program;
-port = 4000;
+let { frames, width, height, port, output, deviceScaleFactor } = program;
+port = port || 4000;
 output = output || 'output';
 deviceScaleFactor = deviceScaleFactor || 1;
 
@@ -111,7 +111,6 @@ async function renderVideo(path) {
 	const input = `${path}/frames/%05d.png`;
 	const file = `${path}/result.mp4`;
 	const command = `ffmpeg -r 60 -f image2 -s ${res} -i ${input} -vcodec libx264 -crf 17 -pix_fmt yuv420p ${file} -hide_banner -loglevel panic`;
-	// console.log(command);
 	shell.exec(command);
 	return Promise.resolve();
 }
@@ -124,8 +123,8 @@ async function init() {
 	} else {
 		try {
 			const path = setupDir();
-			// await cleanDir(path);
-			// await renderFrames(path);
+			await cleanDir(path);
+			await renderFrames(path);
 			await renderVideo(path);
 		} catch(error) {
 			console.error(error);

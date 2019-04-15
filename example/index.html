@@ -8,11 +8,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		margin: 0;
+	}
+
+	main {
+		position: relative;
+	}
+
+	img {
+		display: block;
+		width: 10rem;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 5%;
+		border-radius: 8px;
+	}
+</style>
+
 <body>
-	<main></main>
+	<main>
+		<img src='smokey.jpg'>
+	</main>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script>
 		const main = d3.select('main')
+		const img = main.select('img');
 
 		// override perfomance.now so render-d3-video can control time
 		if (document.URL.includes('render-d3-video')) {
@@ -22,10 +50,14 @@
 
 		function run() {
 			return new Promise(resolve => {
-				main
-					.transition()
-					.duration(1000)
-					.style('background-color', 'orange')
+				const mainW = main.node().offsetWidth;
+				const w = img.node().offsetWidth;
+				const margin = mainW * 0.05;
+				const left = mainW - w - margin;
+				img.transition()
+					.duration(3000)
+					.ease(d3.easeCubicInOut)
+					.style('left', `${left}px`)
 					.on('end', resolve);
 			})
 		}
@@ -38,7 +70,7 @@
 				main
 					.style('width', `${width}px`)
 					.style('height', `${height}px`)
-					.style('background-color', 'blue');
+					.style('background-color', '#fff');
 
 				const start = d3.now();
 				run().then(() => {
