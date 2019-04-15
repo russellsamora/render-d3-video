@@ -30,6 +30,14 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function printProgress(index, total) {
+	const i = index + 1;
+	const percent = d3.format('.1%')(i / total);
+	if (process.stdout.clearLine) process.stdout.clearLine();
+	process.stdout.cursorTo(0);
+	process.stdout.write(`${percent} (${i} of ${total})`);
+}
+
 function invalid() {
 	// validate
 	if (isNaN(frames)) return '--frames is not a valid number';
@@ -84,7 +92,7 @@ async function renderFrames(path) {
 
 		console.log(`rendering frames to ${framePath}...`);
 		for (let f of d3.range(frames)) {
-			console.log(`${f + 1} of ${frames}`);
+			printProgress(f, frames);
 
 			await page.evaluate(f => (currentTime = f), f * FRAME_RATE);
 
@@ -106,7 +114,7 @@ async function renderFrames(path) {
 }
 
 async function renderVideo(path) {
-	console.log('rendering video...');
+	console.log('\nrendering video...');
 	const res = `${width}x${height}`;
 	const input = `${path}/frames/%05d.png`;
 	const file = `${path}/result.mp4`;
