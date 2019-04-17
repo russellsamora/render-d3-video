@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const shell = require('shelljs');
 
-const VERSION = '0.0.1';
+const VERSION = '0.0.4';
 const FRAME_RATE = 1000 / 60;
 const CWD = process.cwd();
 

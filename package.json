@@ -14,8 +14,8 @@
 		"d3",
 		"video"
 	],
-	"author": "",
-	"license": "ISC",
+	"author": "Russell Goldenberg",
+	"license": "MIT",
 	"dependencies": {
 		"commander": "2.20.0",
 		"d3": "5.9.2",
