@@ -119,7 +119,7 @@ async function renderVideo(path) {
 	console.log('\nrendering video...');
 	const res = `${width}x${height}`;
 	const input = `${path}/frames/%05d.png`;
-	const file = `${path}/result.mp4`;
+	const file = `${path}/${output}.mp4`;
 	const command = `ffmpeg -r 60 -f image2 -s ${res} -i ${input} -vcodec libx264 -crf 17 -pix_fmt yuv420p ${file} -hide_banner -loglevel panic`;
 	shell.exec(command);
 	return Promise.resolve();

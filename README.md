@@ -69,6 +69,8 @@ OPTIONS are:
 
 ```
 
+This will create a new directory called `rd3v-[output]`, and generate a subdirectory called `frames` with each frame as a `png`, and the resulting video `[output].mp4`.
+
 ## Tips
 * Rule of thumb: if it is going to transition, style it with D3
 * You can use CSS transforms with D3 transitions, but use pixels, not percents
