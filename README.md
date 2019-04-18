@@ -64,6 +64,7 @@ OPTIONS are:
  -p, --port [optional]               port number, default is 4000
  -o, --output [optional]             output name, default is "output"
  -d, --deviceScaleFactor [optional]  the device pixel ratio, default is 1
+ -b, --buffer [optional]             buffer between frames in ms, default is 50
  -h, --help                          output usage information
 
 ```

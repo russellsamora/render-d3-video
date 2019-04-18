@@ -18,13 +18,15 @@ program.version(VERSION)
 	.option('-p, --port [optional]', 'port number, default is 4000', parseInt)
 	.option('-o, --output [optional]', 'output name, default is "output"')
 	.option('-d, --deviceScaleFactor [optional]', 'the device pixel ratio, default is 1', parseFloat)
+	.option('-b, --buffer [optional]', 'buffer between frames in ms, default is 50')
 	.parse(process.argv);
 
 // arguments
-let { frames, width, height, port, output, deviceScaleFactor } = program;
+let { frames, width, height, port, output, deviceScaleFactor, buffer } = program;
 port = port || 4000;
 output = output || 'output';
 deviceScaleFactor = deviceScaleFactor || 1;
+buffer = buffer || 50;
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -96,8 +98,8 @@ async function renderFrames(path) {
 
 			await page.evaluate(f => (currentTime = f), f * FRAME_RATE);
 
-			// chill for 50ms for some reason
-			await sleep(50);
+			// chill for some ms for some reason
+			await sleep(buffer);
 
 			const file = d3.format('05')(f);
 			const path = `${framePath}/${file}.png`;
