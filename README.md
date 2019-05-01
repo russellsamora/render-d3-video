@@ -1,6 +1,6 @@
 # Render D3 Video
 
-a CLI tool to generate videos from locally running server using d3 to override time.
+a CLI tool to generate videos from a locally running server using d3.js to control time.
 Adapted from [Adam Pearce](https://roadtolarissa.com/d3-mp4/). Real world examples: [Women's Issues Within Political Party Platforms](https://www.youtube.com/watch?v=-DXKDw8l0wY) and [The NBA Has a Defensive Three Seconds Problem](https://pudding.cool/2019/05/three-seconds).
 
 #### Why use this instead of screen recording?
