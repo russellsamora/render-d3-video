@@ -11,7 +11,7 @@ Adapted from [Adam Pearce](https://roadtolarissa.com/d3-mp4/). Real world exampl
 ## Dependencies
 
 - [node](https://nodejs.org)
-- [ffmpeg](https://ffmpeg.org/)
+- [ffmpeg with h264 support](https://github.com/varenc/homebrew-ffmpeg)
 
 ## Installation
 
