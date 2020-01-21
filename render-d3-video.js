@@ -8,7 +8,9 @@ const rimraf = require('rimraf');
 const shell = require('shelljs');
 const readline = require('readline');
 
-const VERSION = '0.0.4';
+const package = require('./package.json');
+const VERSION = package.version;
+
 const FRAME_RATE = 1000 / 60;
 const CWD = process.cwd();
 
