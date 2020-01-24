@@ -6,8 +6,11 @@ const d3 = require('d3');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const shell = require('shelljs');
+const readline = require('readline');
 
-const VERSION = '0.0.4';
+const package = require('./package.json');
+const VERSION = package.version;
+
 const FRAME_RATE = 1000 / 60;
 const CWD = process.cwd();
 
@@ -36,7 +39,7 @@ function printProgress(index, total) {
 	const i = index + 1;
 	const percent = d3.format('.1%')(i / total);
 	if (process.stdout.clearLine) process.stdout.clearLine();
-	process.stdout.cursorTo(0);
+	readline.cursorTo(0);
 	process.stdout.write(`${percent} (${i} of ${total})`);
 }
 
@@ -47,7 +50,7 @@ function invalid() {
 	if (isNaN(height)) return '--height is not a valid number';
 	if (isNaN(port)) '--port is not a valid number';
 	if (!output) return '--output is not a valid string';
-	if (isNaN(deviceScaleFactor)) return '--deviceScaleFactor is not a valid number';	
+	if (isNaN(deviceScaleFactor)) return '--deviceScaleFactor is not a valid number';
 	return false;
 }
 
@@ -70,7 +73,7 @@ function cleanDir(path) {
 }
 
 async function renderFrames(path) {
-	
+
 	console.log(`loading http://localhost:${port}...`);
 	const framePath = `${path}/frames`;
 
@@ -82,7 +85,7 @@ async function renderFrames(path) {
 	} catch(error) {
 		return Promise.reject('error loading page');
 	}
-	
+
 
 	try {
 		// let the page load
