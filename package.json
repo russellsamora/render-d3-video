@@ -19,7 +19,7 @@
 	"dependencies": {
 		"commander": "2.20.0",
 		"d3": "5.9.2",
-		"puppeteer": "1.10.0",
+		"puppeteer": "1.13.0",
 		"rimraf": "2.6.3",
 		"shelljs": "0.8.3"
 	}
